@@ -35,6 +35,11 @@ namespace ProjectStructureExample2019.Models
             return null;
         }
 
+        public List<Account> getAllAccounts()
+        {
+            return bctx.Accounts.ToList();
+        }
+
         public ApplicationUser getUserByID(string id)
         {
             return actx.Users.Find(id);

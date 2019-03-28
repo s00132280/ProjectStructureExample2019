@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ProjectStructureExample2019.Controllers
 {
-    [Authorize(Roles = "Account Manager")]
+    [Authorize(Roles = "Account Manager,Admin")]
     [RoutePrefix("api/AccountManager")]
     public class AccountManagerController : ApiController
     {
@@ -36,6 +36,12 @@ namespace ProjectStructureExample2019.Controllers
 
 
 
+        }
+        [Route("getAllAccounts")]
+        [Authorize(Roles = "Admin")]
+        public List<Account> getAllAccounts()
+        {
+            return db.getAllAccounts();
         }
 
         [Route("getAccountsForCurrentManager/{id}")]

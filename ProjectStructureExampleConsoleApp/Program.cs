@@ -37,6 +37,15 @@ namespace ProjectStructureExampleConsoleApp
                 {
                     Console.WriteLine("Error {0} --> {1}", ex.Message, ex.InnerException.Message);
                 }
+
+                if (ClientAuthentication.login("powell.paul@itsligo.ie", "Ppowell$1"))
+                {
+                    List<Account> accounts = ClientAuthentication.getList<Account>("api/AccountManager/getAllAccounts");
+                    foreach (var item in accounts)
+                    {
+                        Console.WriteLine("Account Name {0}",item.AccountName);
+                    }
+                }
                 Console.ReadKey();
             }
 
